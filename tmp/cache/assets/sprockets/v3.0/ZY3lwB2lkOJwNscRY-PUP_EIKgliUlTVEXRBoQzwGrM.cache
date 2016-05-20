@@ -1,0 +1,24 @@
+I"(function() {
+  this.Recommendation = React.createClass({
+    handleDelete: function(e) {
+      e.preventDefault();
+      return $.ajax({
+        method: 'DELETE',
+        url: "/records/" + this.props.record.id,
+        dataType: 'JSON',
+        success: (function(_this) {
+          return function() {
+            return _this.props.handleDeleteRecord(_this.props.record);
+          };
+        })(this)
+      });
+    },
+    render: function() {
+      return React.DOM.tr(null, React.DOM.td(null, this.props.recommendation.winning_title), React.DOM.td(null, rating_prefFormat(this.props.recommendation.rating_pref)), React.DOM.td(null, this.props.recommendation.genres_pref), React.DOM.td(null, this.props.recommendation.director_pref), React.DOM.td(null, this.props.recommendation.stars_pref), React.DOM.td(null, this.props.recommendation.keywords_pref), React.DOM.td(null, this.props.recommendation.decade_pref), React.DOM.td(null, React.DOM.a({
+        className: 'btn btn-danger'
+      }, 'Delete')));
+    }
+  });
+
+}).call(this);
+:ET

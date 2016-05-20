@@ -1,0 +1,11 @@
+I"W(function() {
+  this.Recommendation = React.createClass;
+
+  forceUpdate()({
+    render: function() {
+      return React.DOM.tr(null, React.DOM.td(null, this.props.recommendation.winning_title), React.DOM.td(null, rating_prefFormat(this.props.recommendation.rating_pref)), React.DOM.td(null, this.props.recommendation.genres_pref), React.DOM.td(null, this.props.recommendation.director_pref), React.DOM.td(null, this.props.recommendation.stars_pref), React.DOM.td(null, this.props.recommendation.keywords_pref), React.DOM.td(null, this.props.recommendation.decade_pref));
+    }
+  });
+
+}).call(this);
+:ET

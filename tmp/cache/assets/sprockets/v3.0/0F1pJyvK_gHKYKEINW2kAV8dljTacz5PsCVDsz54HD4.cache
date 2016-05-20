@@ -1,0 +1,7 @@
+I"‡(function() {
+  this.rating_prefFormat = function(rating_pref) {
+    return Number(rating_pref).toLocaleString();
+  };
+
+}).call(this);
+:ET

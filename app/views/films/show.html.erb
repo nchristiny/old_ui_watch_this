@@ -1,0 +1,71 @@
+<h1>
+  <strong>
+  <%= @film.title %>
+  </strong>
+</h1>
+<p class="right">
+  <% if @film.poster_url == "Poster unavailable" %>
+    <%= image_tag "no_picture.png" %>
+  <% else %>
+    <img src="<%= @film.poster_url %>">
+  <% end %>
+</p>
+<p>
+  <strong>Director:</strong>
+  <%= @film.director %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @film.year %>
+</p>
+
+<p>
+  <strong>Stars:</strong>
+  <% if @film.stars.count == 0 %>
+    <p>No stars to display.</p>
+  <% else %>
+    <% @film.stars.each do |star| %>
+      <br><%= star %>
+    <% end %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Genres:</strong>
+  <% if @film.genre.count == 0 %>
+    <p>No genre to display.</p>
+  <% else %>
+    <% @film.genre.each do |g| %>
+     <%= g %>
+    <% end %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @film.rating %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @film.summary %>
+</p>
+
+<p>
+  <strong>URL:</strong>
+  <%= link_to image_tag('imdb.png'), @film.url, target: '_blank' %>
+</p>
+
+<p>
+  <strong>Keywords:</strong>
+  <% if @film.keywords.count == 0 %>
+    <p>No keywords to display.</p>
+  <% else %>
+    <% @film.keywords.each do |word| %>
+      <%= word %>
+    <% end %>
+  <% end %>
+</p>
+
+<%= link_to 'Back', films_path %>

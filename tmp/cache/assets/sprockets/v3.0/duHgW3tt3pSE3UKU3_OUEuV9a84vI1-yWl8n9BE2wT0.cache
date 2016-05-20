@@ -1,0 +1,38 @@
+I"&(function() {
+  this.Recommendations = React.createClass({
+    getInitialState: function() {
+      return {
+        recommendations: this.props.data
+      };
+    },
+    getDefaultProps: function() {
+      return {
+        recommendations: []
+      };
+    },
+    render: function() {
+      var record;
+      return React.DOM.div({
+        className: 'recommendations'
+      }, React.DOM.h2({
+        className: 'title'
+      }, 'Recommendations'), React.DOM.table({
+        className: 'table table-bordered'
+      }, React.DOM.thead(null, React.DOM.tr(null, React.DOM.th(null, 'Date'), React.DOM.th(null, 'Title'), React.DOM.th(null, 'Amount'))), React.DOM.tbody(null, (function() {
+        var i, len, ref, results;
+        ref = this.state.records;
+        results = [];
+        for (i = 0, len = ref.length; i < len; i++) {
+          record = ref[i];
+          results.push(React.createElement(Record, {
+            key: record.id,
+            record: record
+          }));
+        }
+        return results;
+      }).call(this))));
+    }
+  });
+
+}).call(this);
+:ET

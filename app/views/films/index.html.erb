@@ -1,0 +1,51 @@
+<h1>Films</h1>
+<table class="table table-striped table-sm">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Title</th>
+      <th>Director</th>
+      <th>Genre</th>
+      <th>Summary</th>
+      <th>Rating</th>
+      <th>Poster</th>
+      <th>URL</th>
+      <th>Year</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @films.each do |film| %>
+      <tr>
+        <td><strong><%= film.title %></strong></td>
+        <td><%= film.director %></td>
+        <td>
+          <% if film.genre.count == 0 %>
+            <p>No genre to display.</p>
+          <% else %>
+            <% film.genre.each do |g| %>
+              <%= g %>
+            <% end %>
+          <% end %>
+        </td>
+        <td><%= film.rating %></td>
+        <td><%= film.summary %></td>
+        <td>
+          <% if film.poster_url == "Poster unavailable" %>
+            <%= image_tag "no_picture.png" %>
+          <% else %>
+            <img src="<%= film.poster_url %>">
+          <% end %>
+        </td>
+        <td><%= link_to image_tag('imdb.png'), film.url, target: '_blank' %></td>
+        <td><%= film.year %></td>
+        <td><%= link_to "Show", film_path(:id=>film.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= page_entries_info @films, :entry_name => 'Film' %>
+<br>
+<%= paginate @films %>
+<br>

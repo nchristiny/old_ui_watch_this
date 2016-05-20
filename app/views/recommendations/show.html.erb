@@ -1,0 +1,20 @@
+<h1>Watch This!</h1>
+<% if @recommendation %>
+<h2>
+  <strong>
+  <%= link_to @recommendation.winning_title, '#' %>
+  </strong>
+</h2>
+<ul>
+  <li>Genres preference: <%= @recommendation.genres_pref %></li>
+  <li>Rating preference: <%= @recommendation.rating_pref %></li>
+  <li>Director preference: <%= @recommendation.director_pref %></li>
+  <li>Decade preference: <%= @recommendation.decade_pref %></li>
+  <li>Stars preference: <%= @recommendation.stars_pref %></li>
+  <li>Keywords preference: <%= @recommendation.keywords_pref %></li>
+</ul>
+<% else %>
+  <h3>Nothing to see here. Try a different recommendation or watch The Big Lebowski.</h3>
+<% end %>
+
+<%= link_to 'Back', recommendations_path %>

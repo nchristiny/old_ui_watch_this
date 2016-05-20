@@ -1,0 +1,13 @@
+I"(function() {
+  this.Recommendations = React.createClass({
+    render: function() {
+      return React.DOM.div({
+        className: 'recommendations'
+      }, React.DOM.h2({
+        className: 'winning_title'
+      }, 'Recommendations'));
+    }
+  });
+
+}).call(this);
+:ET

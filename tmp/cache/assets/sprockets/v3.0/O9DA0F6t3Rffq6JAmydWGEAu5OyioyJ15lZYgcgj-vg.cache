@@ -1,0 +1,107 @@
+I"T(function() {
+  this.RecommendationForm = React.createClass({
+    getInitialState: function() {
+      return {
+        winning_title: '',
+        rating_pref: '',
+        genres_pref: '',
+        director_pref: '',
+        decade_pref: '',
+        keywords_pref: '',
+        stars_pref: ''
+      };
+    },
+    handleChange: function(e) {
+      var name, obj;
+      name = e.target.name;
+      return this.setState((
+        obj = {},
+        obj["" + name] = e.target.value,
+        obj
+      ));
+    },
+    valid: function() {
+      return this.state.rating_pref && this.state.genres_pref && this.state.director_pref && this.state.decade_pref && this.state.keywords_pref && this.state.stars_pref;
+    },
+    handleSubmit: function(e) {
+      e.preventDefault();
+      $.post('', {
+        recommendation: this.state
+      }, (function(_this) {
+        return function(data) {
+          _this.props.handleNewRecommendation(data);
+          return _this.setState(_this.getInitialState());
+        };
+      })(this), 'JSON');
+      return forceUpdate();
+    },
+    render: function() {
+      return React.DOM.form({
+        className: 'form-inline',
+        onSubmit: this.handleSubmit
+      }, React.DOM.div({
+        className: 'form-group'
+      }, React.DOM.input({
+        type: 'number',
+        min: '1',
+        max: '10',
+        className: 'form-control',
+        placeholder: 'Rating Preference',
+        name: 'rating_pref',
+        value: this.state.rating_pref,
+        onChange: this.handleChange
+      })), React.DOM.div({
+        className: 'form-group'
+      }, React.DOM.input({
+        type: 'text',
+        className: 'form-control',
+        placeholder: 'Genres Preference',
+        name: 'genres_pref',
+        value: this.state.genres_pref,
+        onChange: this.handleChange
+      })), React.DOM.div({
+        className: 'form-group'
+      }, React.DOM.input({
+        type: 'text',
+        className: 'form-control',
+        placeholder: 'Director Preference',
+        name: 'director_pref',
+        value: this.state.director_pref,
+        onChange: this.handleChange
+      })), React.DOM.div({
+        className: 'form-group'
+      }, React.DOM.input({
+        type: 'text',
+        className: 'form-control',
+        placeholder: 'Stars Preference',
+        name: 'stars_pref',
+        value: this.state.stars_pref,
+        onChange: this.handleChange
+      })), React.DOM.div({
+        className: 'form-group'
+      }, React.DOM.input({
+        type: 'text',
+        className: 'form-control',
+        placeholder: 'Keywords Preference',
+        name: 'keywords_pref',
+        value: this.state.keywords_pref,
+        onChange: this.handleChange
+      })), React.DOM.div({
+        className: 'form-group'
+      }, React.DOM.input({
+        type: 'text',
+        className: 'form-control',
+        placeholder: 'Decade Preference',
+        name: 'decade_pref',
+        value: this.state.decade_pref,
+        onChange: this.handleChange
+      })), React.DOM.button({
+        type: 'submit',
+        className: 'btn btn-primary',
+        disabled: !this.valid()
+      }, 'Create new recommendation'));
+    }
+  });
+
+}).call(this);
+:ET

@@ -1,0 +1,11 @@
+<h1>Users</h1>
+<% @users.each do |user| %>
+    <p>Name: <strong><%= user.name %></strong> | Email: <strong><%= user.email %></strong>
+
+    <%= link_to "Profile", user_path(:id=>user.id) %></p>
+
+    <% if user != @users.last %>
+        <hr />
+    <% end %>
+<% end %>
+

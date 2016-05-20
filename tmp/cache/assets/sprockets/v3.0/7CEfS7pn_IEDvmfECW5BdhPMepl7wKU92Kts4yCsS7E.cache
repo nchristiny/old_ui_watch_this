@@ -1,0 +1,23 @@
+I"Ê(function() {
+  this.Recommendations = React.createClass({
+    getInitialState: function() {
+      return {
+        recommendations: this.props.data
+      };
+    },
+    getDefaultProps: function() {
+      return {
+        recommendations: []
+      };
+    },
+    render: function() {
+      return React.DOM.div({
+        className: 'recommendations'
+      }, React.DOM.h2({
+        className: 'title'
+      }, 'Recommendations'));
+    }
+  });
+
+}).call(this);
+:ET

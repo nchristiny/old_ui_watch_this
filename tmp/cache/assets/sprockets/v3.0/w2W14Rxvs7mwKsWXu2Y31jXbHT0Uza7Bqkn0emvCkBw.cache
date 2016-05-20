@@ -1,0 +1,9 @@
+I"(function() {
+  this.Recommendation = React.createClass({
+    render: function() {
+      return React.DOM.tr(null, React.DOM.td(null, this.props.recommendation.winning_title), React.DOM.td(null, rating_prefFormat(this.props.recommendation.rating_pref)));
+    }
+  });
+
+}).call(this);
+:ET

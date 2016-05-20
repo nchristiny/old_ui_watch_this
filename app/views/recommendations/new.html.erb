@@ -1,0 +1,38 @@
+<h1>New Recommendation</h1>
+<div>
+  <%= simple_form_for(@recommendation, :url => { :action => "create" }, html: { class: 'form-horizontal' }) do |f| %>
+
+  <% if @recommendation.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@recommendation.errors.count, "error") %>.
+    </div>
+    <ul>
+      <% @recommendation.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <%= f.label :genres_pref %>
+  <%= f.text_field :genres_pref %>
+
+  <%= f.label :decade_pref %>
+  <%= f.select :decade_pref, [ ["Any", "Any"], ["Pre 70s", "Pre 70s"], ["70s", "70s"], ["80s", "80s"], ["90s", "90s"], ["2000 onwards", "2000 onwards"] ], {}, {:multiple => true, :include_hidden => true } %>
+
+  <%= f.label :rating_pref %>
+  <%= f.select :rating_pref, options_for_select(0..10) %>
+
+  <%= f.label :director_pref %>
+  <%= f.text_field :director_pref %>
+
+  <%= f.label :stars_pref %>
+  <%= f.text_field :stars_pref %>
+
+  <%= f.label :keywords_pref %>
+  <%= f.text_field :keywords_pref %>
+
+  <%= f.submit "Create my recommendation" %>
+  <% end %>
+</div>

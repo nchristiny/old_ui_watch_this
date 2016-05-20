@@ -1,0 +1,38 @@
+I"3(function() {
+  this.Recommendations = React.createClass({
+    getInitialState: function() {
+      return {
+        recommendations: this.props.data
+      };
+    },
+    getDefaultProps: function() {
+      return {
+        recommendations: []
+      };
+    },
+    render: function() {
+      var recommendation;
+      return React.DOM.div({
+        className: 'recommendations'
+      }, React.DOM.h2({
+        className: 'title'
+      }, 'Recommendations'), React.DOM.table({
+        className: 'table table-bordered table-striped'
+      }, React.DOM.thead(null, React.DOM.tr(null, React.DOM.th(null, 'Winning Title'), React.DOM.th(null, 'Rating Preference'), React.DOM.th(null, 'Genres Preference'), React.DOM.th(null, 'Director Preference'), React.DOM.th(null, 'Decade Preference'), React.DOM.th(null, 'Keywords Preference'), React.DOM.th(null, 'Stars Preference'))), React.DOM.tbody(null, (function() {
+        var i, len, ref, results;
+        ref = this.state.recommendations;
+        results = [];
+        for (i = 0, len = ref.length; i < len; i++) {
+          recommendation = ref[i];
+          results.push(React.createElement(Recommendation, {
+            key: recommendation.id,
+            recommendation: recommendation
+          }));
+        }
+        return results;
+      }).call(this))));
+    }
+  });
+
+}).call(this);
+:ET
